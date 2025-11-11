@@ -113,8 +113,7 @@ export interface AIStudio {
   openSelectKey: () => Promise<void>;
 }
 
-declare global {
-  interface Window {
-    aistudio: AIStudio;
-  }
+// Augment the Window interface directly, instead of using `declare global`
+interface Window {
+  aistudio: AIStudio;
 }

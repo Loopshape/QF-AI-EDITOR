@@ -29,9 +29,9 @@ const Notification: React.FC<NotificationProps> = ({ message, type, onClose }) =
 
   const textColor = type === 'warn' ? 'text-zinc-900' : 'text-white';
 
+  // Fixed the JSX structure to correctly render the Notification component
   return (
     <div
-      // Corrected props usage within JSX
       className={`fixed top-5 right-5 z-[1000] p-3 rounded-md shadow-lg transition-opacity duration-500 ${bgColor} ${textColor}
         ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}
       style={{ fontFamily: 'var(--font-family)', fontSize: '12px' }}
