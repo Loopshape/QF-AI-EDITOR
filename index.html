@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nemodian 2244-1 :: Quantum Fractal AI Editor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Base styles for the dark, futuristic theme */
+      :root {
+          --muted: #888;
+          --info: #2196F3;
+          --warn: #FF9800;
+          --error: #F44336;
+          --success: #4CAF50;
+          --baseline: 1.5em;
+          --header-h: calc(var(--baseline) * 1.6);
+          --status-h: var(--baseline);
+          --footer-h: calc(var(--baseline) * 2);
+          --font-size: 13px;
+          --ln-width: 50px;
+          --theme-bg: #3a3c31;
+          --panel: #313328;
+          --header-bg: #2e3026;
+          --status-bg: #22241e;
+          --accent: #4ac94a;
+          --muted-text: #999966;
+          --err: #a03333;
+          --warn-bg: #f0ad4e;
+          --hover-blue: #3366a0;
+          --info-bg: #5bc0de;
+          --agent-nexus: #BB86FC;
+          --agent-cognito: #03DAC6;
+          --agent-relay: #FFD54F;
+          --agent-sentinel: #CF6679;
+          --agent-echo: #4ac94a;
+          --quantum-glow: rgba(187, 134, 252, 0.6);
+      }
+
+      html, body, #root {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+          font-family: 'Fira Code', monospace;
+          font-size: var(--font-size);
+          line-height: var(--baseline);
+          background: var(--theme-bg);
+          color: #f0f0e0;
+          overflow: hidden;
+      }
+
+      /* Custom scrollbar styles */
+      ::-webkit-scrollbar {
+          width: 12px;
+      }
+
+      ::-webkit-scrollbar-track {
+          background: var(--panel);
+      }
+
+      ::-webkit-scrollbar-thumb {
+          background: var(--muted-text);
+          border-radius: 6px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+          background: var(--accent);
+      }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/"
+  }
+}
+</script>
+</head>
+<body>
+    <div id="root"></div>
+    <div id="portal-root"></div>
+</body>
+</html>
