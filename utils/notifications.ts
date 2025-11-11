@@ -1,5 +1,4 @@
 
-
 import ReactDOM from 'react-dom/client';
 import React, { useEffect, useState } from 'react';
 
@@ -32,6 +31,7 @@ const Notification: React.FC<NotificationProps> = ({ message, type, onClose }) =
 
   return (
     <div
+      // Corrected props usage within JSX
       className={`fixed top-5 right-5 z-[1000] p-3 rounded-md shadow-lg transition-opacity duration-500 ${bgColor} ${textColor}
         ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}
       style={{ fontFamily: 'var(--font-family)', fontSize: '12px' }}
@@ -58,6 +58,6 @@ export const quantumNotify = (message: string, type: 'success' | 'info' | 'warn'
     portalRoot.removeChild(div);
   };
 
-  // Render the Notification component with its props
+  // Render the Notification component with its props using JSX
   root.render(<Notification message={message} type={type} onClose={handleClose} />);
 };

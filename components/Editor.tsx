@@ -1,5 +1,4 @@
 
-
 import React, { useRef, useEffect, useState, useCallback, useMemo } from 'react';
 import { quantumSyntaxHighlighter } from '../utils/syntaxHighlighter';
 import { quantumNotify } from '../utils/notifications';
@@ -165,7 +164,8 @@ const Editor: React.FC<EditorProps> = ({
     }, DEBOUNCE_DELAY);
   }, [isComposing, content, onContentChange, pushHistory, applyHighlighting, updateLineNumbers, updateStatus]);
 
-  const handleKeydown = useCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
+  // Changed type to native KeyboardEvent for addEventListener
+  const handleKeydown = useCallback((e: KeyboardEvent) => {
     if (e.key === 'Tab') {
       e.preventDefault();
       document.execCommand('insertText', false, '    ');
@@ -173,9 +173,10 @@ const Editor: React.FC<EditorProps> = ({
     // Handle Undo/Redo - these are handled by the global actions now
   }, []);
 
-  const handlePaste = useCallback((e: React.ClipboardEvent<HTMLDivElement>) => {
+  // Changed type to native ClipboardEvent for addEventListener
+  const handlePaste = useCallback((e: ClipboardEvent) => {
     e.preventDefault();
-    const text = e.clipboardData.getData('text/plain');
+    const text = e.clipboardData?.getData('text/plain') || ''; // Safely access clipboardData
     document.execCommand('insertText', false, text);
     // Allow a short delay for the DOM to update before re-highlighting
     setTimeout(() => handleInput(), 10);
@@ -187,10 +188,12 @@ const Editor: React.FC<EditorProps> = ({
       editorElement.addEventListener('input', handleInput);
       editorElement.addEventListener('compositionstart', () => setIsComposing(true));
       editorElement.addEventListener('compositionend', () => setIsComposing(false));
+      // Passed native event handler to addEventListener
       editorElement.addEventListener('keydown', handleKeydown);
       editorElement.addEventListener('keyup', updateStatus);
       editorElement.addEventListener('click', updateStatus);
       editorElement.addEventListener('scroll', syncScroll);
+      // Passed native event handler to addEventListener
       editorElement.addEventListener('paste', handlePaste);
 
       // Initial render and setup

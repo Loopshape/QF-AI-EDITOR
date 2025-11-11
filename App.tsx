@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import Editor from './components/Editor';
 import LeftPanel from './components/LeftPanel';
 import AiResponsePanel from './components/AiResponsePanel';
-import { AgentStatus, AppSettings, LogEntry, AgentName, ConsensusResult, RecentFile } from './types';
+import { AgentStatus, AppSettings, LogEntry, AgentName, ConsensusResult, RecentFile, LogType } from './types';
 import { AGENT_CONFIGS, DEFAULT_APP_SETTINGS, DEFAULT_EDITOR_CONTENT, QUANTUM_COMMAND_SUGGESTIONS, MEMORY_STATUS_CLASSES, BUTTON_CLASSES } from './constants';
 import { quantumMemoryManager } from './utils/memoryManager';
 import { quantumNotify } from './utils/notifications';
@@ -134,7 +134,7 @@ const App: React.FC = () => {
       logAgentActivity(AgentName.Nexus, {
         timestamp: new Date().toLocaleTimeString(),
         message: `Critical Orchestration Failure: ${error.message}`,
-        type: 'error',
+        type: LogType.Error, // Corrected LogType usage
       });
     } finally {
       setIsGenerating(false);
